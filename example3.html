@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      canvas {
+          width: 100%;
+          border: 1px solid black;
+          image-rendering: pixelated;
+          background-color: black;
+      }
+    </style>
+</head>
+<body>
+<canvas id="canvas" width="160" height="120"></canvas>
+<script>
+    const img = new Image()
+    function redraw() {
+
+        const WIDTH = 160
+        const HEIGHT = 120
+        const can = document.getElementById('canvas')
+        const ctx = canvas.getContext('2d')
+        ctx.fillStyle = 'white'
+        ctx.fillRect(0,0,WIDTH,HEIGHT)
+        ctx.beginPath()
+        ctx.moveTo(80, 20)
+        ctx.lineTo(140,100)
+        ctx.lineTo(20,100)
+        ctx.closePath()
+        ctx.fillStyle = 'magenta'
+        ctx.fill()
+        ctx.fillStyle = 'black'
+        ctx.font = '16px sans-serif'
+        ctx.fillText('Radical!', 40, 60)
+        // show smooth and stretched
+
+        // now show pixelated
+        // now add the image
+        // ctx.imageSmoothingEnabled = false
+        // ctx.drawImage(img,5,5, 32, 32)
+    }
+    img.addEventListener('load',redraw)
+    img.src = './cat.png'
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style type='text/css'>
+    canvas {
+      /*width: 8000px;*/
+      /*height: auto;*/
+      border: 1px solid black;
+    }
+    #can2 {
+      width: 500px;
+      height: 500px;
+    }
+  </style>
+<body>
+<canvas id="can1" width="500" height="500"></canvas>
+<canvas id="can2" width="1000" height="1000"></canvas>
+<canvas id="can3" width="500" height="500"></canvas>
+<script>
+  function draw(canvas) {
+    const WIDTH = canvas.width
+    const HEIGHT = canvas.height
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,WIDTH,HEIGHT)
+    ctx.beginPath()
+    ctx.arc(WIDTH/2,HEIGHT/2, WIDTH/2,0, Math.PI*2)
+    ctx.fillStyle = 'magenta'
+    ctx.fill()
+  }
+  draw(document.getElementById('can1'))
+  draw(document.getElementById('can2'))
+
+  function drawWithDPI(canvas) {
+    let dpi = window.devicePixelRatio
+    const WIDTH = 500
+    const HEIGHT = 500
+    canvas.width = WIDTH*dpi
+    canvas.height = HEIGHT*dpi
+    canvas.style.width = `${WIDTH}px`
+    canvas.style.width = `${HEIGHT}px`
+    const ctx = canvas.getContext('2d')
+    ctx.save()
+    ctx.scale(dpi,dpi)
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,WIDTH,HEIGHT)
+    ctx.beginPath()
+    ctx.arc(WIDTH/2,HEIGHT/2, WIDTH/2,0, Math.PI*2)
+    ctx.fillStyle = 'magenta'
+    ctx.fill()
+    ctx.restore()
+  }
+  drawWithDPI(document.getElementById('can3'))
+
+</script>
+</body>
+</html>
+

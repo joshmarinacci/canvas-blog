@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <style>
+    body {
+      padding:0;
+      margin:0;
+    }
+    #wrapper {
+      /*width: 100%;*/
+      /*height: 100%;*/
+      width: 100vw;
+      height: 100vh;
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+      border: 5px solid red;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+      border: 5px solid black;
+      padding:0;
+      margin:0;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+
+<div id="wrapper">
+  <canvas id="can" width="500" height="500"></canvas>
+</div>
+<script>
+  window.addEventListener('resize',() => {
+    const wrapper = document.getElementById('wrapper')
+    let rect = wrapper.getBoundingClientRect()
+    const can = document.getElementById('can')
+    can.width = rect.width
+    can.height = rect.height
+    console.log("now div is",wrapper.getBoundingClientRect())
+
+    const WIDTH = can.width
+    const HEIGHT = can.height
+    const ctx = can.getContext('2d')
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,WIDTH,HEIGHT)
+    ctx.beginPath()
+    ctx.arc(WIDTH/2,HEIGHT/2, WIDTH/2,0, Math.PI*2)
+    ctx.fillStyle = 'magenta'
+    ctx.fill()
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<canvas id="can" width="256" height="256"></canvas>
+<style type='text/css'>
+    canvas {
+        width: 8000px;
+        height: auto;
+    }
+</style>
+<body>
+<script>
+    const canvas = document.getElementById('can')
+    const WIDTH = canvas.width
+    const HEIGHT = canvas.height
+    const ctx = canvas.getContext('2d')
+    ctx.fillStyle = 'white'
+    ctx.fillRect(0,0,WIDTH,HEIGHT)
+    ctx.beginPath()
+    ctx.arc(WIDTH/2,HEIGHT/2, WIDTH/2,0, Math.PI*2)
+    ctx.fillStyle = 'magenta'
+    ctx.fill()
+</script>
+</body>
+</html>
