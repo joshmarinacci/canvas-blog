@@ -38,8 +38,8 @@
 
         // now show pixelated
         // now add the image
-        // ctx.imageSmoothingEnabled = false
-        // ctx.drawImage(img,5,5, 32, 32)
+        ctx.imageSmoothingEnabled = false
+        ctx.drawImage(img,5,5, 32, 32)
     }
     img.addEventListener('load',redraw)
     img.src = './cat.png'
